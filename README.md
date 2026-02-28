@@ -1,13 +1,14 @@
-# AI-Enhanced Honeypot & Deception System
+# AI-Enhanced Honeypot & Behavioral Threat Detection System
 
-This project is a rule-based behavioral honeypot built using Python, Flask, and SQLite.
+This project is a cybersecurity prototype built to detect suspicious login activity using both rule-based logic and machine learning. The idea was to create a fake admin login page that captures login attempts and analyzes behavioral patterns instead of actually authenticating users.
+The system records the IP address, username, and timestamp of each attempt. If repeated login attempts are detected from the same IP, a threat score increases. In addition to this rule-based detection, an Isolation Forest model is used to identify unusual behavior patterns automatically. Suspicious activity is then reflected in a real-time dashboard.
 
-Features:
-- Fake login page (decoy system)
-- Captures IP address, username, and timestamp
-- Stores logs in SQLite database
-- Designed for behavioral anomaly detection
+## Tech Used
+Python, Flask, SQLite, Scikit-learn, Pandas
 
-Future Work:
-- Suspicious IP detection (>3 attempts rule)
-- Dashboard for log visualization
+## How to Run
+pip install -r requirements.txt  
+python app.py  
+Open http://127.0.0.1:5000/ in your browser
+
+This project helped me understand how deterministic logic and unsupervised learning can work together in practical cybersecurity systems.
