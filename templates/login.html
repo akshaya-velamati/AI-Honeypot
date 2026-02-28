@@ -1,14 +1,93 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Secure Login</title>
+    <title>Admin Panel Login</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background-color: #f3f4f6;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .container {
+            background: white;
+            width: 360px;
+            padding: 30px;
+            border-radius: 6px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        h2 {
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #333;
+        }
+
+        label {
+            font-size: 14px;
+            color: #555;
+        }
+
+        input {
+            width: 100%;
+            padding: 8px;
+            margin-top: 6px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            font-size: 14px;
+        }
+
+        input:focus {
+            border-color: #4a90e2;
+            outline: none;
+        }
+
+        button {
+            width: 100%;
+            padding: 9px;
+            background-color: #4a90e2;
+            border: none;
+            color: white;
+            font-size: 14px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #3b7cc4;
+        }
+
+        .note {
+            font-size: 12px;
+            margin-top: 12px;
+            color: #777;
+        }
+    </style>
 </head>
 <body>
+
+<div class="container">
     <h2>Admin Login</h2>
+
     <form method="POST">
-        Username: <input type="text" name="username"><br><br>
-        Password: <input type="password" name="password"><br><br>
+        <label>Username</label>
+        <input type="text" name="username" required>
+
+        <label>Password</label>
+        <input type="password" name="password" required>
+
         <button type="submit">Login</button>
     </form>
+
+    <div class="note">
+        Note: This system logs all login attempts.
+    </div>
+</div>
+
 </body>
 </html>

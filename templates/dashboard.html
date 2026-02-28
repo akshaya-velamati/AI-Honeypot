@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>AI Behavioral Threat Dashboard</title>
+    <meta http-equiv="refresh" content="5">
+    <style>
+        body {
+            font-family: "Segoe UI", Tahoma, sans-serif;
+            background-color: #f3f4f6;
+            margin: 0;
+            padding: 20px;
+        }pythopn
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        .stats {
+            text-align: center;
+            margin: 15px 0;
+            color: #555;
+        }
+
+        table {
+            width: 95%;
+            margin: auto;
+            border-collapse: collapse;
+            background: white;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+        }
+
+        th, td {
+            padding: 10px;
+            border-bottom: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4a90e2;
+            color: white;
+        }
+
+        .normal {
+            background-color: #eaf6ea;
+        }
+
+        .suspicious {
+            background-color: #fdeaea;
+        }
+
+        .status-normal {
+            color: #2e7d32;
+            font-weight: 500;
+        }
+
+        .status-suspicious {
+            color: #c62828;
+            font-weight: 500;
+        }
+
+        .score-low {
+            color: #2e7d32;
+        }
+
+        .score-high {
+            color: #c62828;
+            font-weight: 600;
+        }
+    </style>
+</head>
+<body>
+
+<h2>AI-Enhanced Behavioral Threat Dashboard</h2>
+
+<div class="stats">
+    Total Logs: {{ total_logs }} |
+    Threats Detected: {{ suspicious_count }}
+</div>
+
+<table>
+<tr>
+    <th>ID</th>
+    <th>IP Address</th>
+    <th>Username</th>
+    <th>Timestamp</th>
+    <th>Threat Score</th>
+    <th>Status</th>
+</tr>
+
+{% for log in logs %}
+<tr class="{% if log.suspicious == 1 %}suspicious{% else %}normal{% endif %}">
+    <td>{{ log.id }}</td>
+    <td>{{ log.ip }}</td>
+    <td>{{ log.username }}</td>
+    <td>{{ log.timestamp }}</td>
+
+    <td>
+        {% if log.threat_score >= 70 %}
+            <span class="score-high">{{ log.threat_score }}</span>
+        {% else %}
+            <span class="score-low">{{ log.threat_score }}</span>
+        {% endif %}
+    </td>
+
+    <td>
+        {% if log.suspicious == 1 %}
+            <span class="status-suspicious">Suspicious</span>
+        {% else %}
+            <span class="status-normal">Normal</span>
+        {% endif %}
+    </td>
+</tr>
+{% endfor %}
+
+</table>
+
+</body>
+</html>
